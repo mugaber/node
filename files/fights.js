@@ -60,3 +60,4 @@ fs.readFile('fights.csv', (err, buf) => {
 
     console.log('fights.js written successfully')
 })
+
