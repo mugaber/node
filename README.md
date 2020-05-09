@@ -1,3 +1,6 @@
 # Node fundamentals
 
-1. files: reading and writing files
+Here i will try to document the things i know and learn about node
+
+- files: reading and writing files
+- event loop
