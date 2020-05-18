@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Here i will try to document the things i know and learn about node",
   "main": "index.js",
+  "author": "mugaber",
+  "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,10 +13,11 @@
     "url": "git+https://github.com/MuGaber/node.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/MuGaber/node/issues"
   },
-  "homepage": "https://github.com/MuGaber/node#readme"
+  "homepage": "https://github.com/MuGaber/node#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

@@ -29,15 +29,24 @@ function doWork(duration) {
  * the first instance that get created creates @cluster_manager
  * that runs @cluster_form that runs the app again and creates
  * another instance to handle requests and process processes
+ *
+ * when increasing the number of children over the number of
+ * either physical or logical cores this will not give us
+ * a boost in performance, infact this will make the processing
+ * of the requests take much more time because it will make
+ * the processor go back and forth between processes to process
  */
 
 const cluster = require('cluster')
+const crypto = require('crypto')
 const NumCPUs = require('os').cpus().length
 
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} running`)
 
-  for (let i = 0; i < NumCPUs; i++) {
+  // increase the number of children by double
+
+  for (let i = 0; i < NumCPUs * 2; i++) {
     cluster.fork()
   }
 
@@ -51,8 +60,9 @@ if (cluster.isMaster) {
   const app = epxress()
 
   app.get('', (req, res) => {
-    doWork(3000)
-    res.send('hi there')
+    crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
+      res.send('finished processing')
+    })
   })
 
   app.listen(3000)
